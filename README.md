@@ -1,4 +1,4 @@
-# gURL: Go URL Request Library <!-- omit in toc --> [![test](https://github.com/m-mizutani/gurl/actions/workflows/test.yml/badge.svg)](https://github.com/m-mizutani/gurl/actions/workflows/test.yml) [![gosec](https://github.com/m-mizutani/gurl/actions/workflows/gosec.yml/badge.svg)](https://github.com/m-mizutani/gurl/actions/workflows/gosec.yml)
+# gURL: Go URL Request Library <!-- omit in toc --> [![Go Reference](https://pkg.go.dev/badge/github.com/m-mizutani/gurl.svg)](https://pkg.go.dev/github.com/m-mizutani/gurl) [![test](https://github.com/m-mizutani/gurl/actions/workflows/test.yml/badge.svg)](https://github.com/m-mizutani/gurl/actions/workflows/test.yml) [![gosec](https://github.com/m-mizutani/gurl/actions/workflows/gosec.yml/badge.svg)](https://github.com/m-mizutani/gurl/actions/workflows/gosec.yml) [![trivy](https://github.com/m-mizutani/gurl/actions/workflows/trivy.yml/badge.svg)](https://github.com/m-mizutani/gurl/actions/workflows/trivy.yml)
 
 Make a URL request in Go easy.
 
