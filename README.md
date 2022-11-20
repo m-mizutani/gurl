@@ -30,6 +30,7 @@ Go official [net/http](https://pkg.go.dev/net/http) package is simple and powerf
 - [JSON Response Content](#json-response-content)
 - [Dump response body](#dump-response-body)
 - [With context.Context](#with-contextcontext)
+- [Error handling](#error-handling)
 - [Testing with your http.Client or http.HandlerFunc](#testing-with-your-httpclient-or-httphandlerfunc)
 
 ### Passing body data
@@ -159,6 +160,22 @@ If original URL has query string, `WithParam()` keeps original query parameters 
 	); err != nil {
 		log.Fatal(err.Error())
 	}
+```
+
+### Error handling
+
+`gurl` uses [goerr](https://github.com/m-mizutani/goerr) and keeps response body content  to error structure when the request is failed. It can be extracted with `errors.As` method.
+
+```go
+	if err := gurl.Get("https://example.com",
+		gurl.WithClient(&errorClient{}),
+	); err != nil {
+		var goErr *goerr.Error
+		if errors.As(err, &goErr) {
+			fmt.Println(string(goErr.Values()["body"].([]byte)))
+		}
+	}
+	//Output: crashed!
 ```
 
 ### Testing with your http.Client or http.HandlerFunc
