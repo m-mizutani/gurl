@@ -1,4 +1,4 @@
-# gURL: Go URL Request Library <!-- omit in toc -->
+# gURL: Go URL Request Library <!-- omit in toc --> [![test](https://github.com/m-mizutani/gurl/actions/workflows/test.yml/badge.svg)](https://github.com/m-mizutani/gurl/actions/workflows/test.yml) [![gosec](https://github.com/m-mizutani/gurl/actions/workflows/gosec.yml/badge.svg)](https://github.com/m-mizutani/gurl/actions/workflows/gosec.yml)
 
 Make a URL request in Go easy.
 
