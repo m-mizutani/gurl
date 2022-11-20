@@ -26,9 +26,10 @@ Go official [net/http](https://pkg.go.dev/net/http) package is simple and powerf
 
 - [Passing body data](#passing-body-data)
 - [Passing query string parameters in URL](#passing-query-string-parameters-in-url)
-- [Passing HTTP header](#passing-http-header)
-- [Decoding response body as JSON](#decoding-response-body-as-json)
-- [Dump response body to io.Writer](#dump-response-body-to-iowriter)
+- [Custom Headers](#custom-headers)
+- [JSON Response Content](#json-response-content)
+- [Dump response body](#dump-response-body)
+- [With context.Context](#with-contextcontext)
 - [Testing with your http.Client or http.HandlerFunc](#testing-with-your-httpclient-or-httphandlerfunc)
 
 ### Passing body data
@@ -100,7 +101,7 @@ If original URL has query string, `WithParam()` keeps original query parameters 
 	}
 ```
 
-### Passing HTTP header
+### Custom Headers
 
 `WithHeader()` can add HTTP header to a request.
 
@@ -112,7 +113,7 @@ If original URL has query string, `WithParam()` keeps original query parameters 
 	}
 ```
 
-### Decoding response body as JSON
+### JSON Response Content
 
 `WithReader()` and `DecodeAsJSON()` support to decode JSON formatted response.
 
@@ -131,7 +132,7 @@ If original URL has query string, `WithParam()` keeps original query parameters 
 	//Output: https://api.github.com/user/keys
 ```
 
-### Dump response body to io.Writer
+### Dump response body
 
 `CopyStream()` calls `io.Copy()` to read response body and to write given `io.Writer`. For example, following code saves result of HTTP request to a temp file.
 
@@ -143,6 +144,18 @@ If original URL has query string, `WithParam()` keeps original query parameters 
 
 	if err := gurl.Get("https://api.github.com/",
 		gurl.WithReader(gurl.CopyStream(f)),
+	); err != nil {
+		log.Fatal(err.Error())
+	}
+```
+
+### With context.Context
+
+`WithCtx()` will create `http.Request` with `context.Context`.
+
+```go
+	if err := gurl.Get("https://slow.example.com",
+	    gurl.WithCtx(ctx),
 	); err != nil {
 		log.Fatal(err.Error())
 	}
